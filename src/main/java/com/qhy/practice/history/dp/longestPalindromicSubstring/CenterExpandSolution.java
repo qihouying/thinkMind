@@ -1,11 +1,15 @@
-package com.qhy.practice.longestPalindromicSubstring;
+package com.qhy.practice.history.dp.longestPalindromicSubstring;
 
 /**
  * Desc:
+ *
+ * http://windliang.cc/2018/08/05/leetCode-5-Longest-Palindromic-Substring/
+ * 提到5种解决方案
+ *
  * author: qihouying@meituan.com
  * Date:   09 25, 2018 14:51
  */
-public class Solution {
+public class CenterExpandSolution {
     public static String longestPalindrome(String s) {
         if (null == s || s.length() < 1)
             return "";
@@ -32,6 +36,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(Solution.longestPalindrome("bbb"));
+        System.out.println(CenterExpandSolution.longestPalindrome("bbb"));
     }
 }

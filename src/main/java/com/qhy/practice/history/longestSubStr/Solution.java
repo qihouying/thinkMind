@@ -1,4 +1,4 @@
-package com.qhy.practice.longestSubStr;
+package com.qhy.practice.history.longestSubStr;
 
 import java.util.HashMap;
 import java.util.Map;

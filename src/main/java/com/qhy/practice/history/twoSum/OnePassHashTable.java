@@ -1,4 +1,4 @@
-package com.qhy.practice.twoSum;
+package com.qhy.practice.history.twoSum;
 
 import java.util.*;
 
