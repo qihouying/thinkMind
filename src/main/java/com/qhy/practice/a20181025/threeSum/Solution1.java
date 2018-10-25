@@ -1,5 +1,7 @@
 package com.qhy.practice.a20181025.threeSum;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,6 +22,13 @@ import java.util.List;
  */
 public class Solution1 {
     public List<List<Integer>> threeSum(int[] nums) {
-        
+        if (null == nums || 0 == nums.length)
+            return null;
+        List<List<Integer>> elements = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            
+        }
+
     }
 }
