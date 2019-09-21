@@ -22,8 +22,6 @@ import java.util.Stack;
  [1, 2, 5]
  [2, 6]
  [1, 1, 6]
-
-
  */
 public class Solution {
     public List<List<Integer>> combineationSumII(int[] array, int target) {

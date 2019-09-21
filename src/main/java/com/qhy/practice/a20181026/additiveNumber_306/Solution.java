@@ -4,7 +4,7 @@ package com.qhy.practice.a20181026.additiveNumber_306;
  * Created by dream on 2018/10/28.
  *
  *   Additive number is a string whose digits can form additive sequence.
-     A valid additive sequence should contain at least three numbers. Except for the first two numbers,
+     A valid additive sequence should contain at least three numbers. Except for the ThreeSum two numbers,
      each subsequent number in the sequence must be the sum of the preceding two.
 
      For example:

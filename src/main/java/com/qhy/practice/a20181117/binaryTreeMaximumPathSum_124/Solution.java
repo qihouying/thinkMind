@@ -17,7 +17,7 @@ import com.qhy.practice.a20181027.balancedBinaryTree_110.TreeNode;
  Companies
     Microsoft Baidu
  Topics
-    Tree Depth-first Search
+    Tree Depth-ThreeSum Search
  */
 public class Solution {
     int maxValue;

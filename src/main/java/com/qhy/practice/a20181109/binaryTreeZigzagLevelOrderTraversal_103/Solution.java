@@ -22,7 +22,7 @@ import java.util.List;
              [15,7] ]
      Companies
         Microsoft Bloomberg
-     LinkedIn Stack Tree Breadth-first Search
+     LinkedIn Stack Tree Breadth-ThreeSum Search
      Topics
 
  */

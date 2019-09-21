@@ -16,7 +16,7 @@ import java.util.List;
      5 4 <--- You should return [1, 3, 4].
      Companies Amazon
      Topics
-     Tree Depth-first Search Breadth-first Search
+     Tree Depth-ThreeSum Search Breadth-ThreeSum Search
  */
 public class Solution {
     public List<Integer> rightSideView(TreeNode root) {

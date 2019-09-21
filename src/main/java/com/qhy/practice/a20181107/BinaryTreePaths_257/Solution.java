@@ -17,7 +17,7 @@ import java.util.List;
      Companies
      Google Facebook Apple
      Topics
-     Tree Depth-first Search
+     Tree Depth-ThreeSum Search
 
  */
 public class Solution {
