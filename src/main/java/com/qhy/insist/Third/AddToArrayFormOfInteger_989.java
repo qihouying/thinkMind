@@ -1,5 +1,9 @@
 package com.qhy.insist.Third;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @Author houyingqi
  * @Date 2019-09-25 16:25
@@ -17,6 +21,7 @@ package com.qhy.insist.Third;
  * Input: A = [1,2,0,0], K = 34
  * Output: [1,2,3,4]
  * Explanation: 1200 + 34 = 1234
+ *
  * Example 2:
  *
  * Input: A = [2,7,4], K = 181
@@ -41,5 +46,40 @@ package com.qhy.insist.Third;
  * 0 <= K <= 10000
  * If A.length > 1, then A[0] != 0
  **/
+
+//巧妙之处：用(A[i] + K)同时包含了carry
 public class AddToArrayFormOfInteger_989 {
+
+    public List<Integer> addToArrayForm(int[] A, int K) {
+        List<Integer> res = new LinkedList<>();
+        for (int i = A.length - 1; i >= 0; --i) {
+            res.add(0, (A[i] + K) % 10);
+            K = (A[i] + K) / 10;
+        }
+        while (K > 0) {
+            res.add(0, K % 10);
+            K /= 10;
+        }
+        return res;
+    }
+
+    //Method2: 通过条件判断综合在一个循环中
+    public List<Integer> addToArrayForm1(int[] A, int K) {
+        List res = new LinkedList<>();
+        for (int i = A.length - 1; i >= 0 || K > 0; --i) {
+            res.add(0, (i >= 0 ? A[i] + K : K) % 10);
+            K = (i >= 0 ? A[i] + K : K) / 10;
+        }
+        return res;
+    }
+
+
+    public static void main(String[] args) {
+        int[] A = {2,1,5};
+        int k = 806;
+        AddToArrayFormOfInteger_989 addToArray = new AddToArrayFormOfInteger_989();
+        System.out.println(addToArray.addToArrayForm(A, k));
+    }
+
+
 }
