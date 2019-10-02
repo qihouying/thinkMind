@@ -1,11 +1,9 @@
-package com.qhy.insist.Third;
-
-import java.util.LinkedList;
+package com.qhy.insist.three;
 
 /**
  * @Author houyingqi
  * @Date 2019-09-25 16:19
- * @Description [Medium]
+ * @Description [Medium]  Topics: [LinkedList] [Math]
  *
  * You are given two non-empty linked lists representing two non-negative integers. The
  * digits are stored in reverse order and each of their nodes contain a single digit. Add the

@@ -1,9 +1,9 @@
-package com.qhy.insist.Fourth;
+package com.qhy.insist.four;
 
 /**
  * @Author houyingqi
  * @Date 2019-10-01 19:37
- * @Description [Easy]
+ * @Description [Easy] Topics: [Array]
  *
  * The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is
  * the sum of the two preceding ones, starting from 0 and 1. That is,

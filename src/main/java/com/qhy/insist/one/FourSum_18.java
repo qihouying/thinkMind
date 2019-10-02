@@ -1,4 +1,4 @@
-package com.qhy.insist.first;
+package com.qhy.insist.one;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @Author houyingqi
  * @Date 2019-09-21 15:42
- * @Description   [medium]
+ * @Description  [medium]  Topics: [Array] [HashTable] [Two Pointers]
  *
  * Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums
  * such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.

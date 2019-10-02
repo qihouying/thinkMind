@@ -1,9 +1,9 @@
-package com.qhy.insist.Fourth;
+package com.qhy.insist.four;
 
 /**
  * @Author houyingqi
  * @Date 2019-10-01 20:49
- * @Description
+ * @Description [Easy] Topics: [Dynamic Programming]
  *
  * You are climbing a stair case. It takes n steps to reach to the top.
  *

@@ -1,9 +1,9 @@
-package com.qhy.insist.Fourth;
+package com.qhy.insist.four;
 
 /**
  * @Author houyingqi
  * @Date 2019-10-01 21:08
- * @Description [Easy]
+ * @Description [Easy] Topics: [Recursion]
  *
  * The Tribonacci sequence Tn is defined as follows:
  *

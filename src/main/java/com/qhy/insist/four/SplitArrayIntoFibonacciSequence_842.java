@@ -1,4 +1,4 @@
-package com.qhy.insist.Fourth;
+package com.qhy.insist.four;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @Author houyingqi
  * @Date 2019-10-01 12:20
- * @Description [Medium]
+ * @Description [Medium] Topics: [String] [Backtracking] [Greedy]
  *
  * Given a string S of digits, such as S = "123456579", we can split it into a Fibonacci-like sequence [123, 456, 579].
  *

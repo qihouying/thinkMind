@@ -1,11 +1,11 @@
-package com.qhy.insist.Fourth;
+package com.qhy.insist.four;
 
 import java.util.*;
 
 /**
  * @Author houyingqi
  * @Date 2019-10-01 21:21
- * @Description [Medium]
+ * @Description [Medium]  Topics: [Array] [Dynamic Programming]
  *
  * A sequence X_1, X_2, ..., X_n is fibonacci-like if:
  *

@@ -1,4 +1,4 @@
-package com.qhy.insist.first;
+package com.qhy.insist.one;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,8 @@ import java.util.List;
 /**
  * @Author houyingqi
  * @Date 2019-09-21 14:44
- * @Description  [medium]
+ * @Description  [medium] Topics: [Array] [Two Pointers]
+ *
  * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
  * Find all unique triplets in the array which gives the sum of zero.
  *

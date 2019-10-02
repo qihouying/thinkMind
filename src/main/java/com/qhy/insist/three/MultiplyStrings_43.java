@@ -1,9 +1,9 @@
-package com.qhy.insist.Third;
+package com.qhy.insist.three;
 
 /**
  * @Author houyingqi
  * @Date 2019-09-25 16:22
- * @Description [Medium]
+ * @Description [Medium]   Topics: [Math]
  *
  * Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2,
  * also represented as a string.

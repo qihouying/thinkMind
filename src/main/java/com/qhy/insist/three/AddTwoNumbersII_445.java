@@ -1,4 +1,4 @@
-package com.qhy.insist.Third;
+package com.qhy.insist.three;
 
 import java.util.Stack;
 

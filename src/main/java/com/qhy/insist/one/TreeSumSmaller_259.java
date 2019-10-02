@@ -1,9 +1,10 @@
-package com.qhy.insist.first;
+package com.qhy.insist.one;
 
 /**
  * @Author houyingqi
  * @Date 2019-09-21 14:08
- * @Description [medium]
+ * @Description [medium]  Topics: [Array] [Two Pointers]
+ *
  * Given an array of n integers nums and a target, find the number of index triplets i, j,
  * k with 0 <= i < j < k < n that satisfy the condition nums[i] + nums[j] + nums[k] <
  * target .

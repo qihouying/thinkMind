@@ -1,11 +1,11 @@
-package com.qhy.insist.Fourth;
+package com.qhy.insist.four;
 
 import java.math.BigInteger;
 
 /**
  * @Author houyingqi
  * @Date 2019-09-30 19:24
- * @Description [Medium]
+ * @Description [Medium] Topics: [Backtracking]
  *
  * Additive number is a string whose digits can form additive sequence.
  * A valid additive sequence should contain at least three numbers. Except for the first

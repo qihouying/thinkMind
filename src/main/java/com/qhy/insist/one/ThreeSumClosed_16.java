@@ -1,11 +1,11 @@
-package com.qhy.insist.first;
+package com.qhy.insist.one;
 
 import java.util.Arrays;
 
 /**
  * @Author houyingqi
  * @Date 2019-09-21 12:48
- * @Description [medium]
+ * @Description [medium] Topics: [Array] [Two Pointers]
  *
  * Given an array S of n integers, find three integers in S such that the sum is closest to a
  * given number, target. Return the sum of the three integers. You may assume that each

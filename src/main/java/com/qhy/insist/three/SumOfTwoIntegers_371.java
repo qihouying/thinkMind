@@ -1,9 +1,9 @@
-package com.qhy.insist.Third;
+package com.qhy.insist.three;
 
 /**
  * @Author houyingqi
  * @Date 2019-09-25 16:24
- * @Description [Easy]
+ * @Description [Easy] Topics: [Bit Manipulation]
  *
  * Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
  *
