@@ -68,9 +68,9 @@ public class ArithmeticSlicesII_Subsequence_446 {
                 int d = (int)diff;
                 int m1 = maps[i].getOrDefault(d, 0);
                 int m2 = maps[j].getOrDefault(d, 0);
-//                System.out.println("i=" +i+", j="+j+", d="+d + ", m1="+m1+", m2="+m2);
                 res += m2;
                 maps[i].put(d, m1+m2+1);
+                System.out.println("i=" +i+", j="+j+", d="+d + ", m1="+m1+", m2="+m2+", maps[" +i+"]="+maps[i]);
             }
         }
         return res;

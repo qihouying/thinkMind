@@ -46,6 +46,13 @@ import java.util.Map;
  **/
 public class FrogJump_403 {
 
+    /**
+     * Thoughts:
+     *
+     * 对于每一个石头，设置一个set，用来记录从左边调过来得步数有哪几种，然后根据这个set再算，从当前石头上，可以跳到右边哪些石头上
+     * 注意出口：1.只需要在遍历过程中判断，是否可以跳到最后一个石头上即可；2.最后只要判断最后一个石头的set是否为空，就可以判断青蛙能否跳过和
+     */
+
     public boolean canCross(int[] stones) {
         if (stones.length == 0) {
             return true;
@@ -56,10 +63,12 @@ public class FrogJump_403 {
         Map<Integer, HashSet<Integer>> map = new HashMap<Integer, HashSet<Integer>>(stones.length);
         map.put(0, new HashSet<Integer>());
         map.get(0).add(1);
+        //为了后面判断set != null，map中stones集合中的石头对应的value一定不是null
         for (int i = 1; i < stones.length; i++) {
             map.put(stones[i], new HashSet<Integer>() );
         }
 
+        //这里，注意判断条件是i < stones.length - 1，最后一个石头无需向右跳
         for (int i = 0; i < stones.length - 1; i++) {
             int stone = stones[i];
             for (int step : map.get(stone)) {
@@ -68,11 +77,13 @@ public class FrogJump_403 {
                     return true;
                 }
                 HashSet<Integer> set = map.get(reach);
+
                 if (set != null) {
                     set.add(step);
                     if (step - 1 > 0) set.add(step - 1);
                     set.add(step + 1);
                 }
+//                System.out.println("i="+i+",step="+step+",set="+set+",map="+map);
             }
         }
 
@@ -84,6 +95,6 @@ public class FrogJump_403 {
         int[] stones1 = {0,1,3,5,6,8,12,17};
         FrogJump_403 frogJump = new FrogJump_403();
         System.out.println(frogJump.canCross(stones1));
-        System.out.println(frogJump.canCross(stones));
+//        System.out.println(frogJump.canCross(stones));
     }
 }
