@@ -301,6 +301,7 @@ public class ReversePairs_493 {
         return res;
     }
 
+    //1.用于计算(2L * ele + 1)后在copy数组中的下标 2.计算原数组中每个元素在copy数组中的下标
     private int index(int[] arr, long val) {
         int l = 0, r = arr.length - 1, m = 0;
 
@@ -328,6 +329,17 @@ public class ReversePairs_493 {
         return sum;
     }
 
+    /**
+     * For each element being scanned,we first search the bit to find all elements greater than twice of it and add the
+     * result to res. We then insert the element itself into the bit for future search.
+     *
+     *Let me add more explanations for why the BIT approach is
+     * "i += i&(-i)" for search, and
+     * "i -= i &(-i)" for insert.
+     * which is contrary to the "commonly" used way for BIT, where
+     * "i += (-i)" for insert, and
+     * "i -= i&(-i)" for search
+     */
     private void insert(int[] bit, int i) {
         while (i > 0) {
             bit[i] += 1;
