@@ -21,105 +21,70 @@ package com.qhy.insist.eight.RangeSumQuery_Mutable_307;
  * The array is only modifiable by the update function.
  * You may assume the number of calls to update and sumRange function is distributed evenly.
  **/
-//A classic subject，including many methods, you should review it again
+/**
+ * Approach 4: Binary Indexed Tree
+ *
+ * 参考：https://www.topcoder.com/community/competitive-programming/tutorials/binary-indexed-trees/
+ *
+ * Binary Indexed Tree, 树状数组比较有意思，所有的奇数位置的数字和原数组对应位置的相同，偶数位置是原数组若干位值之和，假如原数组
+ * A(a1, a2, a3, a4 ...)，和其对应的树状数组 C(c1, c2, c3, c4 ...)有如下关系：
+ * C1 = A1
+ * C2 = A1 + A2
+ * C3 = A3
+ * C4 = A1 + A2 + A3 + A4
+ * C5 = A5
+ * C6 = A5 + A6
+ * C7 = A7
+ * C8 = A1 + A2 + A3 + A4 + A5 + A6 + A7 + A8
+ * ...
+ * bit[] as a binary tree:
+ *      *            ______________*
+ *      *            ______*
+ *      *            __*     __*
+ *      *            *   *   *   *
+ *      * indices: 0 1 2 3 4 5 6 7 8
+ * 那么是如何确定某个位置到底是有几个数组成的呢，原来是根据坐标的最低位 Low bit 来决定的，所谓的最低位，就是二进制数的最右边的一个1
+ * 开始，加上后面的0(如果有的话)组成的数字，例如1到8的最低位如下面所示：
+ *
+ * 坐标          二进制       最低位
+ *
+ * 1               0001          1
+ *
+ * 2               0010          2
+ *
+ * 3               0011          1
+ *
+ * 4               0100          4
+ *
+ * 5               0101          1
+ *
+ * 6               0110          2
+ *
+ * 7               0111          1
+ *
+ * 8               1000          8
+ *
+ * ...
+ *
+ * 最低位的计算方法有两种，一种是 x&(x^(x–1))，另一种是利用补码特性 x&-x。
+ *
+ * 这道题我们先根据给定输入数组建立一个树状数组 bit，比如，对于 nums = {1, 3, 5, 9, 11, 13, 15, 17}，建立出的 bit 数组为：
+ *
+ * bit -> 0 1 4 5 18 11 24 15 74
+ *
+ * 注意到我们给 bit 数组开头 padding 了一个0，这样我们在利用上面的树状数组的性质时就不用进行坐标转换了。可以发现bit数组中奇数位上的
+ * 数字跟原数组是相同的，参见上面标记蓝色的数字。偶数位则是之前若干位之和，符合上图中的规律。
+ *
+ *
+ * 时间复杂度:
+ *     查询和修改复杂度均为 O(logn)
+ *     Space complexity : O(1).
+ */
+//重点掌握该方法
 public class NumArray_BinaryIndexedTree {
     int[] nums;
     int[] bit;
     int n;
-
-    /**
-     * Approach 4: Binary Indexed Tree
-     *
-     * Binary Indexed Tree, 树状数组比较有意思，所有的奇数位置的数字和原数组对应位置的相同，偶数位置是原数组若干位值之和，假如原数组
-     * A(a1, a2, a3, a4 ...)，和其对应的树状数组 C(c1, c2, c3, c4 ...)有如下关系：
-     * C1 = A1
-     * C2 = A1 + A2
-     * C3 = A3
-     * C4 = A1 + A2 + A3 + A4
-     * C5 = A5
-     * C6 = A5 + A6
-     * C7 = A7
-     * C8 = A1 + A2 + A3 + A4 + A5 + A6 + A7 + A8
-     * ...
-     * 那么是如何确定某个位置到底是有几个数组成的呢，原来是根据坐标的最低位 Low bit 来决定的，所谓的最低位，就是二进制数的最右边的一个1
-     * 开始，加上后面的0(如果有的话)组成的数字，例如1到8的最低位如下面所示：
-     *
-     * 坐标          二进制       最低位
-     *
-     * 1               0001          1
-     *
-     * 2               0010          2
-     *
-     * 3               0011          1
-     *
-     * 4               0100          4
-     *
-     * 5               0101          1
-     *
-     * 6               0110          2
-     *
-     * 7               0111          1
-     *
-     * 8               1000          8
-     *
-     * ...
-     *
-     * 最低位的计算方法有两种，一种是 x&(x^(x–1))，另一种是利用补码特性 x&-x。
-     *
-     * 这道题我们先根据给定输入数组建立一个树状数组 bit，比如，对于 nums = {1, 3, 5, 9, 11, 13, 15, 17}，建立出的 bit 数组为：
-     *
-     * bit -> 0 1 4 5 18 11 24 15 74
-     *
-     * 注意到我们给 bit 数组开头 padding 了一个0，这样我们在利用上面的树状数组的性质时就不用进行坐标转换了。可以发现bit数组中奇数位上的
-     * 数字跟原数组是相同的，参见上面标记蓝色的数字。偶数位则是之前若干位之和，符合上图中的规律。
-     *
-     *
-     * 时间复杂度
-     * 查询和修改复杂度均为 O(logn)
-     *
-     * Space complexity : O(1).
-     */
-
-    /**
-     * Binary Indexed Trees (bit or Fenwick tree):
-     * https://www.topcoder.com/community/data-science/data-science-
-     * tutorials/binary-indexed-trees/
-     *
-     * Example: given an array a[0]...a[7], we use a array bit[9] to
-     * represent a tree, where index [2] is the parent of [1] and [3], [6]
-     * is the parent of [5] and [7], [4] is the parent of [2] and [6], and
-     * [8] is the parent of [4]. I.e.,
-     *
-     * bit[] as a binary tree:
-     *            ______________*
-     *            ______*
-     *            __*     __*
-     *            *   *   *   *
-     * indices: 0 1 2 3 4 5 6 7 8
-     *
-     * bit[i] = ([i] is a left child) ? the partial sum from its left most
-     * descendant to itself : the partial sum from its parent (exclusive) to
-     * itself. (check the range of "__").
-     *
-     * Eg. bit[1]=a[0], bit[2]=a[1]+bit[1]=a[1]+a[0], bit[3]=a[2],
-     * bit[4]=a[3]+bit[3]+bit[2]=a[3]+a[2]+a[1]+a[0],
-     * bit[6]=a[5]+bit[5]=a[5]+a[4],
-     * bit[8]=a[7]+bit[7]+bit[6]+bit[4]=a[7]+a[6]+...+a[0], ...
-     *
-     * Thus, to update a[1]=bit[2], we shall update bit[2], bit[4], bit[8],
-     * i.e., for current [i], the next update [j] is j=i+(i&-i) //double the
-     * last 1-bit from [i].
-     *
-     * Similarly, to get the partial sum up to a[6]=bit[7], we shall get the
-     * sum of bit[7], bit[6], bit[4], i.e., for current [i], the next
-     * summand [j] is j=i-(i&-i) // delete the last 1-bit from [i].
-     *
-     * To obtain the original value of a[7] (corresponding to index [8] of
-     * bit), we have to subtract bit[7], bit[6], bit[4] from bit[8], i.e.,
-     * starting from [idx-1], for current [i], the next subtrahend [j] is
-     * j=i-(i&-i), up to j==idx-(idx&-idx) exclusive. (However, a quicker
-     * way but using extra space is to store the original array.)
-     */
 
     /**
      * 1. Build Binary Indexed Tree
@@ -139,6 +104,7 @@ public class NumArray_BinaryIndexedTree {
         i++;
         while (i <= n) {
             bit[i] += val;
+            System.out.println("i=" + i + ", bit[" +i+"]=" + bit[i]);
             i += (i & -i);
         }
     }

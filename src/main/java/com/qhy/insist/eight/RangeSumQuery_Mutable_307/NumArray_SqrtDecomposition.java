@@ -21,34 +21,33 @@ package com.qhy.insist.eight.RangeSumQuery_Mutable_307;
  * The array is only modifiable by the update function.
  * You may assume the number of calls to update and sumRange function is distributed evenly.
  **/
-//A classic subject，including many methods, you should review it again
+/**
+ * Approach 2: Sqrt Decomposition
+ *
+ * 思想：
+ * The idea is to split the array in blocks with length of sqrt{n}. Then we calculate the sum of each block and
+ * store it in auxiliary memory b. To query RSQ(i, j), we will add the sums of all the blocks lying inside and
+ * those that partially overlap with range [i…j].
+ *
+ * Complexity Analysis
+ *
+ * Time complexity : O(n)- preprocessing, O(sqrt{n})- range sum query, O(1)- update query
+ *
+ * For range sum query in the worst-case scenario we have to sum approximately 3*sqrt{n} elements.
+ * In this case the range includes sqrt{n-2} blocks, which total sum costs sqrt{n-2} operations. In addition to this
+ * we have to add the sum of the two boundary blocks. This takes another 2*sqrt{n-1} operations. The total amount of
+ * operations is around 3*sqrt{n}
+ *
+ * Space complexity : O(sqrt{n})
+ *
+ * We need additional sqrt{n} memory to store all block sums
+ *
+ */
 public class NumArray_SqrtDecomposition {
     int[] nums;
     int len;
     int[] block;
 
-    /**
-     * Approach 2: Sqrt Decomposition
-     *
-     * 思想：
-     * The idea is to split the array in blocks with length of sqrt{n}. Then we calculate the sum of each block and
-     * store it in auxiliary memory b. To query RSQ(i, j), we will add the sums of all the blocks lying inside and
-     * those that partially overlap with range [i…j].
-     *
-     * Complexity Analysis
-     *
-     * Time complexity : O(n)- preprocessing, O(sqrt{n})- range sum query, O(1)- update query
-     *
-     * For range sum query in the worst-case scenario we have to sum approximately 3*sqrt{n} elements.
-     * In this case the range includes sqrt{n-2} blocks, which total sum costs sqrt{n-2} operations. In addition to this
-     * we have to add the sum of the two boundary blocks. This takes another 2*sqrt{n-1} operations. The total amount of
-     * operations is around 3*sqrt{n}
-     *
-     * Space complexity : O(sqrt{n})
-     *
-     * We need additional sqrt{n} memory to store all block sums
-     *
-     */
     public NumArray_SqrtDecomposition(int[] nums) {
         this.nums = nums;
         double q = Math.sqrt(nums.length); //尽量让每个block中包含的数字个数相等

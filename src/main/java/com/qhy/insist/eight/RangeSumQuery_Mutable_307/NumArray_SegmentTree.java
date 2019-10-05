@@ -21,40 +21,38 @@ package com.qhy.insist.eight.RangeSumQuery_Mutable_307;
  * The array is only modifiable by the update function.
  * You may assume the number of calls to update and sumRange function is distributed evenly.
  **/
-//A classic subject，including many methods, you should review it again
+/**
+ * Approach 3: Segment Tree
+ *
+ * Segment tree is a very flexible data structure, because it is used to solve numerous range query problems like
+ * finding minimum, maximum, sum, greatest common divisor, least common denominator in array in logarithmic time.
+ * 分段树用数组模拟，确实很tricky。用一个大小为 2n 的 tree 数字，然后就要往里面填数字了。填数字的方式先给 tree 数组的后n个数字按顺序填上 nums 数字，比如对于 nums = [1 3 5 7]，那么 tree 数组首先填上：
+ *_ _ _ _ 1 3 5 7
+ *
+ * 然后从 i=3 开始，每次填上 tree[2*n] + tree[2*n+1]，那么以此为：
+ *
+ * _ _ _ 12 1 3 5 7
+ *
+ * _ _ 4 12 1 3 5 7
+ *
+ * _ 16 4 12 1 3 5 7
+ *
+ * 那么最终的 tree 数组就是 [0 16 4 12 1 3 5 7]，tree[0] 其实没啥作用
+ *
+ *
+ * Complexity Analysis
+ *
+ * Time complexity : O(logn).
+ *
+ * Algorithm has O(logn) time complexity, because there are a few tree nodes with range that include ith array element,
+ * one on each level. There are log(n) levels.
+ *
+ * Space complexity : O(1).
+ */
 public class NumArray_SegmentTree {
     int[] nums;
     int[] tree;
     int n;
-
-    /**
-     * Approach 3: Segment Tree
-     *
-     * Segment tree is a very flexible data structure, because it is used to solve numerous range query problems like
-     * finding minimum, maximum, sum, greatest common divisor, least common denominator in array in logarithmic time.
-     * 分段树用数组模拟，确实很tricky。用一个大小为 2n 的 tree 数字，然后就要往里面填数字了。填数字的方式先给 tree 数组的后n个数字按顺序填上 nums 数字，比如对于 nums = [1 3 5 7]，那么 tree 数组首先填上：
-     *_ _ _ _ 1 3 5 7
-     *
-     * 然后从 i=3 开始，每次填上 tree[2*n] + tree[2*n+1]，那么以此为：
-     *
-     * _ _ _ 12 1 3 5 7
-     *
-     * _ _ 4 12 1 3 5 7
-     *
-     * _ 16 4 12 1 3 5 7
-     *
-     * 那么最终的 tree 数组就是 [0 16 4 12 1 3 5 7]，tree[0] 其实没啥作用
-     *
-     *
-     * Complexity Analysis
-     *
-     * Time complexity : O(logn).
-     *
-     * Algorithm has O(logn) time complexity, because there are a few tree nodes with range that include ith array element,
-     * one on each level. There are log(n) levels.
-     *
-     * Space complexity : O(1).
-     */
 
     /**
      * 1. Build segment tree
@@ -81,7 +79,7 @@ public class NumArray_SegmentTree {
         for (int i = n, j = 0; i < 2*n; i++,j++) {
             tree[i] = nums[j];
         }
-        for (int i = 1; i < n; i++) {
+        for (int i = n-1; i > 0; i--) {
             tree[i] = tree[2*i] + tree[2*i+1];
         }
     }
@@ -117,11 +115,11 @@ public class NumArray_SegmentTree {
      *
      * l≤r and sum of [L…l] and [r…R] has been calculated, where l and r are the left
      * and right boundary of calculated sum. Initially we set ll with left leaf L and r with right leaf R. Range [l,r]
-     * shrinks on each iteration till range borders meets after approximately \log nlogn iterations of the algorithm
+     * shrinks on each iteration till range borders meets after approximately logn iterations of the algorithm
      *
      * Loop till rl≤r
      * Check if l is right child of its parent P
-     * 1) l is right child of PP. Then PP contains sum of range of ll and another child which is outside the range [l,r]
+     * 1) l is right child of P. Then P contains sum of range of l and another child which is outside the range [l,r]
      * and we don't need parent P sum. Add l to sum without its parent P and set l to point to the right of P on the
       * upper level.
      * 2) l is not right child of P. Then parent P contains sum of range which lies in [l,r]. Add P to sum and set l to
@@ -145,11 +143,11 @@ public class NumArray_SegmentTree {
         for (i += n,j += n; i <= j; i /= 2,j /= 2) {
             //如果i为奇数，即为右结点
             if ((i & 1) == 1) {
-                sum += nums[i++];
+                sum += tree[i++];
             }
             //如果j为偶数，即为左结点
             if ((j & 1) == 0) {
-                sum += nums[j--];
+                sum += tree[j--];
             }
         }
         return sum;
