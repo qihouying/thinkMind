@@ -1,5 +1,6 @@
 package com.qhy.insist.ten;
 
+import java.util.Collections;
 import java.util.Stack;
 
 /**
@@ -72,5 +73,10 @@ public class BasicCalculator_224 {
         System.out.println(basicCalculator.calculate(s1));
         /*System.out.println(basicCalculator.calculate(s2));
         System.out.println(basicCalculator.calculate(s3));*/
+
+
+
+
+
     }
 }
