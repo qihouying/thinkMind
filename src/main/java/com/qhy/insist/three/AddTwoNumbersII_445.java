@@ -120,7 +120,7 @@ public class AddTwoNumbersII_445 {
      * @return
      */
     public ListNode method3(ListNode l1, ListNode l2) {
-
+        return new ListNode(1);
     }
 
 
