@@ -37,21 +37,24 @@ import java.util.Stack;
     Output: 42
  */
 public class BinaryTreeMaximumPathSum_124 {
+    int maxValue;
     public int maxPathSum(TreeNode root) {
-        if (null == root)
+        maxValue = Integer.MIN_VALUE;
+        maxPathDown(root);
+        return maxValue;
+    }
+
+    public int maxPathDown(TreeNode node) {
+        if (null == node)
             return 0;
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        List<Integer> list = new ArrayList<Integer>();
-        stack.push(root);
-        TreeNode cur = root;
-        while (null != root || !stack.isEmpty()) {
-            while (null != cur) {
-                stack.push(cur);
-                cur = cur.left;
-            }
-            cur = stack.pop();
-            list.add(cur.val);
-            cur = cur.right;
-        }
+        int left = Math.max(0,maxPathDown(node.left));
+        int right = Math.max(0,maxPathDown(node.right));
+        /**
+         * maxValue is the value which recording whether this current root is the final root, so we use
+         * left + right + node.val. But to the upper layer(after return statement), we cannot choose both left and right
+         * brunches, so we need to select the larger one, so we use max(left, right) + node.val to prune the lower brunch.
+         */
+        maxValue = Math.max(maxValue, left+right+node.val);
+        return Math.max(left, right) + node.val;
     }
 }
