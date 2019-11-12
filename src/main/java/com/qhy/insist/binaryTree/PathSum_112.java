@@ -1,5 +1,7 @@
 package com.qhy.insist.binaryTree;
 
+import java.util.Stack;
+
 /**
  * @Author dream
  * @Date 2019/11/9 10:39 PM
@@ -30,5 +32,28 @@ public class PathSum_112 {
         if (null == root.left && null == root.right)
             return sum == root.val;
         return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);
+    }
+
+    //迭代法
+    public boolean hasPathSum_iter(TreeNode root, int target) {
+        if (null == root)
+            return false;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.peek();
+            stack.pop();
+            if (null == node.left && null == node.right && target == node.val)
+                return true;
+            if (null != node.left) {
+                node.left.val += node.val;
+                stack.push(node.left);
+            }
+            if (null != node.right) {
+                node.right.val += node.val;
+                stack.push(node.right);
+            }
+        }
+        return false;
     }
 }
