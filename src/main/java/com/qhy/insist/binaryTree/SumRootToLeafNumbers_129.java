@@ -40,4 +40,15 @@ package com.qhy.insist.binaryTree;
     Therefore, sum = 495 + 491 + 40 = 1026.
  */
 public class SumRootToLeafNumbers_129 {
+    public int sumNumbers(TreeNode root) {
+        return sum(root, 0);
+    }
+
+    public int sum(TreeNode node, int sum) {
+        if (null == node)
+            return 0;
+        if (null == node.right && null == node.left)
+            return sum*10 + node.val;
+        return sum(node.left, sum*10 + node.val) + sum(node.right, sum*10 + node.val);
+    }
 }

@@ -53,7 +53,9 @@ public class SplitArrayLargestSum_410 {
     /**
      *  Method1: binary search + greedy  [Amazing]
      *
-     *  大神的整体思路：假设我们已经在解空间里有了一系列minMaxsums，去搜索一个minMaxsum(尽量让划分后的m个部分的sum相近，此时，划分后最大sum几位所求)使得符合m
+     *  大神的整体思路：假设我们已经在解空间里有了一系列minMaxsums，去搜索一个minMaxsum(尽量让划分后的m个部分的sum相近，此时，
+     *  划分后最大sum几位所求)使得符合m
+     *
      *
      *  进一步思考：可能的minMaxsum有哪些，中间的哪些minMaxsum我们是不知道的，这是问题的关键！所以这个问题就假设最极端的两头情况：
      *
