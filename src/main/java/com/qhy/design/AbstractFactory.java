@@ -5,5 +5,8 @@ package com.qhy.design;
  * @Date 2020/1/18 10:29 PM
  * @Description []   Topics: []  companies: []
  */
-public class AbstractFactory {
+
+//抽象工厂：提供了产品的生成方法
+public interface AbstractFactory {
+    public Product newProduct();
 }
