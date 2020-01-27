@@ -1,5 +1,10 @@
 package com.qhy.insist.binaryTree;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * @Author dream
  * @Date 2019/11/26 9:30 AM
@@ -40,5 +45,26 @@ package com.qhy.insist.binaryTree;
 
  */
 public class KeysAndRooms_841 {
+
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        Set<Integer> visited = new HashSet<>();
+        addKey(0, rooms, visited);
+        return visited.size() == rooms.size();
+    }
+
+    public void addKey(int room, List<List<Integer>> rooms, Set<Integer> visited) {
+        visited.add(room);
+        for (int key : rooms.get(room)) {
+            if (!visited.contains(key)) {
+                addKey(key, rooms, visited);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        List<List<Integer>> rooms = Arrays.asList(Arrays.asList(1,3), Arrays.asList(3, 0, 1), Arrays.asList(2), Arrays.asList(0));
+        KeysAndRooms_841 keysAndRooms = new KeysAndRooms_841();
+        System.out.println(keysAndRooms.canVisitAllRooms(rooms));
+    }
 
 }
