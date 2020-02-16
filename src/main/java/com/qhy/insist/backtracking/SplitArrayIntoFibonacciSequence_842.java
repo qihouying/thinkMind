@@ -1,4 +1,4 @@
-package com.qhy.insist.dynamicPrograming.class_06;
+package com.qhy.insist.backtracking;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
